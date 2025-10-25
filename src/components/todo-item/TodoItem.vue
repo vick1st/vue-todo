@@ -2,17 +2,12 @@
   <div class="todo-item">
     <input type="checkbox" :checked="todo.completed" @change="$emit('toggle', todo.id)" />
     <span :class="{ completed: todo.completed }">{{ todo.text }}</span>
-    <button @click="$emit('delete', todo.id)">Excluir</button>
+    <button @click="$emit('delete', todo.id)">Remover</button>
   </div>
 </template>
 
 <script setup>
-defineProps({
-  todo: {
-    type: Object,
-    required: true,
-  },
-})
+defineProps({ todo: Object })
 defineEmits(['toggle', 'delete'])
 </script>
 
@@ -23,7 +18,6 @@ defineEmits(['toggle', 'delete'])
   gap: 1rem;
   padding: 0.5rem 0;
 }
-
 .todo-item .completed {
   text-decoration: line-through;
   color: #888;
@@ -36,7 +30,6 @@ button {
   font-size: 1rem;
   padding: 0.2rem 0.6rem;
   border-radius: 3px;
-  transition: background 0.2s;
 }
 button:hover {
   background: #ffe5e5;
